@@ -6,19 +6,32 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import NewsLetter from "@/components/NewsLetter";
 import SocialProof from "@/components/SocialProof";
-import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useRef } from "react";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 type Props = {};
 
-function joinWaitlist({}: Props) {
+function JoinWaitlist({}: Props) {
+  const waitlistRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToWaitlist = () => {
+    if (waitlistRef.current) {
+      const yOffset = -60;
+      const yPosition =
+        waitlistRef.current.getBoundingClientRect().top +
+        window.scrollY +
+        yOffset;
+      window.scrollTo({ top: yPosition, behavior: "smooth" });
+    }
+  };
   return (
     <>
       <Header />
-      <CallToAction />
-      <SocialProof />
-      <EmailWaitlist />
+      <CallToAction scrollToWaitlist={scrollToWaitlist} /> <SocialProof />
+      <div ref={waitlistRef}>
+        <EmailWaitlist />
+      </div>
       <NewsLetter />
       <Footer />
       <ToastContainer
@@ -37,4 +50,4 @@ function joinWaitlist({}: Props) {
   );
 }
 
-export default joinWaitlist;
+export default JoinWaitlist;

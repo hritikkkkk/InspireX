@@ -2,9 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-type Props = {};
+type Props = {
+  scrollToWaitlist: () => void;
+};
 
-function CallToAction({}: Props) {
+function CallToAction({ scrollToWaitlist }: Props) {
   return (
     <section className="bg-white py-8 md:py-10">
       <motion.div
@@ -23,17 +25,15 @@ function CallToAction({}: Props) {
         />
         <div className="mt-8 md:mt-0">
           <h2 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight leading-none text-primaryText">
-            Introducing InspireX: Where your creativity meets boundless
-            possibilities.
+            Introducing InspireX: Where your creativity meets boundless possibilities.
           </h2>
           <p className="mb-6 text-lg font-normal text-secondaryText">
-            Our no-code platform empowers you to transform your ideas into
-            reality effortlessly. Build, share, and innovate without boundaries
-            unleash your imagination with InspireX.
+            Our no-code platform empowers you to transform your ideas into reality effortlessly.
+            Build, share, and innovate without boundaries. Unleash your imagination with InspireX.
           </p>
-          <a
-            href="#"
-            className="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+          <button
+            onClick={scrollToWaitlist}
+            className="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             Get started
             <svg
@@ -48,7 +48,7 @@ function CallToAction({}: Props) {
                 clipRule="evenodd"
               ></path>
             </svg>
-          </a>
+          </button>
         </div>
       </motion.div>
     </section>
